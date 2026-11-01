@@ -54,6 +54,7 @@ All run as `npm run <script>`. The table is regenerated from `package.json` by t
 | `npm run format` | prettier --write . |
 | `npm run test` | vitest run |
 | `npm run test:e2e` | playwright test |
+| `npm run test:live` | LIVE_URL=https://m4dd0ck.github.io/intake-web/ playwright test |
 <!-- generated:commands end -->
 
 `scripts/refresh-fixtures.sh <data-intake checkout>` rebuilds `sample/` and `tests/fixtures/`

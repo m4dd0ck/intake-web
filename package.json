@@ -16,7 +16,8 @@
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:live": "LIVE_URL=https://m4dd0ck.github.io/intake-web/ playwright test"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

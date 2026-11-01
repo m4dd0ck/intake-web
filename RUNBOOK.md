@@ -47,6 +47,8 @@ When DataIntake's checks or demo data change:
 
 Nothing by hand. Every push to `main` runs CI (lint, types, unit and parity tests, the browser
 smoke test) and deploys `dist/` to GitHub Pages. `gh run list --limit 3` shows whether it landed.
+Once it has, `npm run test:live` runs the browser tests against the deployed site, which
+also checks that Pages serves the Content Security Policy and nothing reaches another origin.
 
 ## Things that bite
 

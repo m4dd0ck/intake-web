@@ -25,7 +25,7 @@ test("the sample audit runs with no request after load and none to another origi
   baseURL,
 }) => {
   const { requests, violations } = watch(page);
-  await page.goto("/");
+  await page.goto("./");
   await engineReady(page);
   const beforeAudit = requests.length;
 
@@ -57,7 +57,7 @@ test("the sample audit runs with no request after load and none to another origi
 });
 
 test("a visitor's own files are audited and unsupported ones listed", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("./");
   await engineReady(page);
   await page.locator("#file-input").setInputFiles([
     {
@@ -72,7 +72,7 @@ test("a visitor's own files are audited and unsupported ones listed", async ({ p
 });
 
 test("the drop zone is reached and opened from the keyboard", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("./");
   await engineReady(page);
   await page.getByLabel("Leave out example values").focus();
   await page.keyboard.press("Tab");
@@ -84,7 +84,7 @@ test("the drop zone is reached and opened from the keyboard", async ({ page }) =
 
 test("the page and report fit a phone screen", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 740 });
-  await page.goto("/");
+  await page.goto("./");
   await engineReady(page);
   await page.getByRole("button", { name: "Try the sample studio" }).click();
   await expect(page.locator("#report .finding").first()).toBeVisible();
