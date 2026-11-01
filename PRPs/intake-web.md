@@ -32,41 +32,41 @@ exports in a minute, with nothing to trust because nothing leaves their machine.
 
 ## What
 
-- [ ] TypeScript port of DataIntake's loaders (header detection, header cleaning, limits),
+- [x] TypeScript port of DataIntake's loaders (header detection, header cleaning, limits),
       kinds, the five check modules, relations, KPI rules, profiles and audit ordering.
-- [ ] CSV reading with DuckDB-Wasm (`read_csv(..., all_varchar = true, header = false,
+- [x] CSV reading with DuckDB-Wasm (`read_csv(..., all_varchar = true, header = false,
       sample_size = -1)`, the exact call DataIntake makes); Excel with SheetJS 0.20.3.
-- [ ] A module Web Worker that owns the engine and posts progress.
-- [ ] Page: drop zone + file input, client name, export date, hide-examples toggle, "try the
+- [x] A module Web Worker that owns the engine and posts progress.
+- [x] Page: drop zone + file input, client name, export date, hide-examples toggle, "try the
       sample" buttons, progress, report, Blob downloads of HTML and JSON.
-- [ ] Vitest: each check, loaders, Python-compatible helpers, report/JSON, parity against
+- [x] Vitest: each check, loaders, Python-compatible helpers, report/JSON, parity against
       fixtures produced by the Python tool.
-- [ ] Playwright smoke test against `vite preview`.
-- [ ] GitHub Pages workflow (not enabled), four-file skeleton, LICENSE.
+- [x] Playwright smoke test against `vite preview`.
+- [x] GitHub Pages workflow (not enabled), four-file skeleton, LICENSE.
 
 ---
 
 ## Success Criteria
 
 ### Functional Requirements
-- [ ] Parity: the TS audit of `sample/shop` and `sample/studio` equals
+- [x] Parity: the TS audit of `sample/shop` and `sample/studio` equals
       `tests/fixtures/{shop,studio}.json` on tables, findings, joins and KPIs.
-- [ ] The page renders the four report sections and both downloads work.
-- [ ] Unsupported or unreadable files are listed and do not stop the audit.
+- [x] The page renders the four report sections and both downloads work.
+- [x] Unsupported or unreadable files are listed and do not stop the audit.
 
 ### Non-Functional Requirements
-- [ ] Responsiveness: all parsing and checks run in the worker; the page shows per-file
+- [x] Responsiveness: all parsing and checks run in the worker; the page shows per-file
       progress; a 30 MB CSV completes.
-- [ ] Privacy: CSP `connect-src 'self'`; no analytics; Playwright asserts zero requests after
+- [x] Privacy: CSP `connect-src 'self'`; no analytics; Playwright asserts zero requests after
       the engine reports ready and none to another origin at any time.
-- [ ] Safety: every data value HTML-escaped in page and report; report has no `<script>`.
-- [ ] Accessibility: the drop zone is a labelled button that opens the file picker, works with
+- [x] Safety: every data value HTML-escaped in page and report; report has no `<script>`.
+- [x] Accessibility: the drop zone is a labelled button that opens the file picker, works with
       Enter/Space; status is announced via `aria-live`; layout works at 360 px; light and dark.
 
 ### Testing Requirements
-- [ ] One test file per check module, synthetic inputs only (mirroring DataIntake's tests).
-- [ ] Parity test over both demo businesses.
-- [ ] Report escaping, self-containment and JSON shape tests.
+- [x] One test file per check module, synthetic inputs only (mirroring DataIntake's tests).
+- [x] Parity test over both demo businesses.
+- [x] Report escaping, self-containment and JSON shape tests.
 
 ---
 
@@ -308,3 +308,4 @@ Python formatting edge cases and the nested DuckDB worker under CSP, both covere
 | Date | Author | Change |
 |------|--------|--------|
 | 2026-11-01 | coding agent | Initial PRP created |
+| 2026-11-01 | coding agent | Executed; all deliverables and criteria met (see README History) |
