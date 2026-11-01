@@ -178,8 +178,9 @@ Generated and gitignored: `dist/`, `node_modules/`, `test-results/`, `playwright
 
 ## History
 
-- 2026-11-01 First version: the full DataIntake audit in the browser, parity with DataIntake on
-  both demo businesses, Playwright smoke test, Pages workflow.
+- 2026-11-01 v0.1.0, live on GitHub Pages: the full DataIntake audit in the browser, parity
+  with DataIntake on both demo businesses, Playwright smoke test (also run against the live
+  site), Pages workflow.
 
 ## Development
 
