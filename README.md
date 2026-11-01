@@ -100,8 +100,8 @@ Node in the tests.
 
 - CSV, `.txt`, `.xlsx` and `.xlsm`, as in DataIntake. Files over 200 MB, a million rows or 500
   columns are refused.
-- The engine is a one-off download of 36 MB (about 8 MB when the server compresses it), fetched when
-  the page opens.
+- The engine is a one-off download of 36 MB, which GitHub Pages serves gzipped as 8.3 MB
+  (measured 2026-11-01), fetched when the page opens.
 - Needs a browser with WebAssembly exception handling and workers inside workers: current
   Chrome, Edge, Firefox and Safari.
 - Everything is held in the tab's memory; a file of a few hundred MB may be too much for a
