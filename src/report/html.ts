@@ -25,7 +25,7 @@ function share(part: number, whole: number): string {
   return `${formatFixed((part / whole) * 100, 0)}%`;
 }
 
-function findingsSection(audit: Audit): string {
+function findingsSection(audit: Audit, h3: string): string {
   if (audit.findings.length === 0) return "<p>No problems found.</p>";
   return audit.findings
     .map((f) => {
@@ -34,7 +34,7 @@ function findingsSection(audit: Audit): string {
         ? `<div class="examples">${f.examples.map((e) => `<span>${escapeHtml(e)}</span>`).join("")}</div>`
         : "";
       return `<div class="finding ${f.severity}">
-  <h3><span class="badge ${f.severity}">${f.severity}</span>${escapeHtml(f.title)}</h3>
+  <${h3}><span class="badge ${f.severity}">${f.severity}</span>${escapeHtml(f.title)}</${h3}>
   <div class="where">${escapeHtml(f.table)}${where} &middot; ${escapeHtml(f.detail)}</div>
   <p class="impact">${escapeHtml(f.impact)}</p>
   ${examples}
@@ -94,11 +94,19 @@ ${columns}
     .join("\n");
 }
 
-/** The report's sections, for the page or for the standalone file. */
-export function renderReportBody(audit: Audit): string {
+/**
+ * The report's sections, for the page or for the standalone file.
+ *
+ * Args:
+ *   audit: The audit to show.
+ *   headingOffset: Added to every heading level, so the report can sit under a page's own h1.
+ */
+export function renderReportBody(audit: Audit, headingOffset = 0): string {
+  const heading = (level: number): string => `h${Math.min(level + headingOffset, 6)}`;
+  const [h1, h2, h3] = [heading(1), heading(2), heading(3)];
   const files = new Set(audit.tables.map((t) => t.source));
   const rows = audit.tables.reduce((sum, t) => sum + t.rows, 0);
-  return `<h1>Data audit: ${escapeHtml(audit.client)}</h1>
+  return `<${h1} class="report-title">Data audit: ${escapeHtml(audit.client)}</${h1}>
 <p class="sub">${audit.tables.length} tables from ${files.size} files, ${formatGrouped(rows, 0)} rows &middot; data as of ${escapeHtml(audit.as_of)}</p>
 <div class="tiles">
   <div class="tile critical"><b>${countSeverity(audit, "critical")}</b><span>critical: fix before any analysis</span></div>
@@ -106,13 +114,13 @@ export function renderReportBody(audit: Audit): string {
   <div class="tile info"><b>${countSeverity(audit, "info")}</b><span>notes: worth knowing</span></div>
   <div class="tile"><b>${audit.kpis.length}</b><span>metrics the data can support</span></div>
 </div>
-<h2>What to fix first</h2>
-${findingsSection(audit)}
-<h2>What this data can answer</h2>
+<${h2}>What to fix first</${h2}>
+${findingsSection(audit, h3)}
+<${h2}>What this data can answer</${h2}>
 ${kpiSection(audit)}
-<h2>How the files connect</h2>
+<${h2}>How the files connect</${h2}>
 ${joinSection(audit)}
-<h2>Files</h2>
+<${h2}>Files</${h2}>
 ${filesSection(audit)}`;
 }
 

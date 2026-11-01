@@ -49,6 +49,7 @@ describe("HTML report", () => {
       "Files",
     ]) {
       expect(body).toContain(`<h2>${heading}</h2>`);
+      expect(renderReportBody(hostile, 1)).toContain(`<h3>${heading}</h3>`);
     }
     expect(body).toContain("<td>95%</td><td>6</td>");
   });
