@@ -4,6 +4,11 @@ DataIntake's first-day data audit as a static web page: drop CSV and Excel expor
 report, with every file read and checked in your browser. TypeScript, Vite, DuckDB-Wasm,
 SheetJS, Web Workers.
 
+**Try it: [m4dd0ck.github.io/intake-web](https://m4dd0ck.github.io/intake-web/)**
+(the sample buttons load DataIntake's synthetic demo exports)
+
+![The page before an audit: the privacy notice and the drop zone](assets/page.png)
+
 This file is the reference: what exists and how it works. `RUNBOOK.md` is the procedures,
 `CLAUDE.md` the agent rules, `TASK.md` the open items.
 
@@ -121,6 +126,7 @@ sample/                 # DataIntake's synthetic demo exports (committed)
 tests/                  # vitest: each check, loaders, report, parity; fixtures/ from DataIntake
 e2e/                    # Playwright smoke test against the built site
 scripts/                # fixture refresh from a DataIntake checkout
+assets/                 # README screenshot, taken from the live site
 PRPs/, INITIAL.md       # the plan this was built from
 ```
 
