@@ -1,0 +1,11 @@
+dist/
+node_modules/
+coverage/
+test-results/
+playwright-report/
+scratch/
+sample/
+tests/fixtures/
+package-lock.json
+PRPs/
+INITIAL.md
