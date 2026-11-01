@@ -1,0 +1,561 @@
+{
+  "client": "Pinecrest Goods",
+  "as_of": "2024-12-31",
+  "tables": [
+    {
+      "name": "customers",
+      "source": "customers.xlsx",
+      "rows": 122,
+      "columns": [
+        {
+          "name": "customer_id",
+          "kind": "id",
+          "non_empty": 122,
+          "distinct": 122,
+          "examples": [
+            "C0001",
+            "C0002",
+            "C0003"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "name",
+          "kind": "text",
+          "non_empty": 122,
+          "distinct": 81,
+          "examples": [
+            "Finn Stone",
+            "Ana Pine",
+            "Finn Price"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "email",
+          "kind": "email",
+          "non_empty": 122,
+          "distinct": 121,
+          "examples": [
+            "finn.stone1@mail.com",
+            "ana.pine2@mail.com",
+            "finn.price3@mail.com"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "country",
+          "kind": "category",
+          "non_empty": 122,
+          "distinct": 4,
+          "examples": [
+            "DE",
+            "US",
+            "CA"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "signup_date",
+          "kind": "date",
+          "non_empty": 122,
+          "distinct": 106,
+          "examples": [
+            "2024-02-09",
+            "2024-07-02",
+            "2023-03-01"
+          ],
+          "minimum": "2023-01-02",
+          "maximum": "2024-08-23"
+        },
+        {
+          "name": "phone",
+          "kind": "text",
+          "non_empty": 122,
+          "distinct": 121,
+          "examples": [
+            "555-4003",
+            "555-2186",
+            "555-1275"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "phone_2",
+          "kind": "text",
+          "non_empty": 122,
+          "distinct": 122,
+          "examples": [
+            "555-7968",
+            "555-5406",
+            "555-2451"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "notes",
+          "kind": "empty",
+          "non_empty": 0,
+          "distinct": 0,
+          "examples": [],
+          "minimum": null,
+          "maximum": null
+        }
+      ],
+      "header_row": 2
+    },
+    {
+      "name": "orders",
+      "source": "orders.csv",
+      "rows": 617,
+      "columns": [
+        {
+          "name": "order_id",
+          "kind": "id",
+          "non_empty": 617,
+          "distinct": 600,
+          "examples": [
+            "1001",
+            "1002",
+            "1003"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "order_date",
+          "kind": "date",
+          "non_empty": 617,
+          "distinct": 268,
+          "examples": [
+            "2024-01-01",
+            "1/2/2024",
+            "2024-01-03"
+          ],
+          "minimum": "2024-01-01",
+          "maximum": "2025-02-03"
+        },
+        {
+          "name": "customer_id",
+          "kind": "text",
+          "non_empty": 609,
+          "distinct": 128,
+          "examples": [
+            "C0071",
+            "C0069",
+            "C0053"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "country",
+          "kind": "category",
+          "non_empty": 617,
+          "distinct": 6,
+          "examples": [
+            "us",
+            "US",
+            "GB"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "amount",
+          "kind": "currency",
+          "non_empty": 617,
+          "distinct": 589,
+          "examples": [
+            "37.32",
+            "36.66",
+            "45.22"
+          ],
+          "minimum": "-45.00",
+          "maximum": "25,000.00"
+        },
+        {
+          "name": "status",
+          "kind": "category",
+          "non_empty": 617,
+          "distinct": 1,
+          "examples": [
+            "paid"
+          ],
+          "minimum": null,
+          "maximum": null
+        }
+      ],
+      "header_row": 0
+    },
+    {
+      "name": "products",
+      "source": "products.csv",
+      "rows": 40,
+      "columns": [
+        {
+          "name": "sku",
+          "kind": "id",
+          "non_empty": 40,
+          "distinct": 40,
+          "examples": [
+            "SKU-001",
+            "SKU-002",
+            "SKU-003"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "product_name",
+          "kind": "text",
+          "non_empty": 40,
+          "distinct": 40,
+          "examples": [
+            "Item 1",
+            "Item 2",
+            "Item 3"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "price",
+          "kind": "currency",
+          "non_empty": 40,
+          "distinct": 40,
+          "examples": [
+            "$34.98",
+            "$24.68",
+            "$90.21"
+          ],
+          "minimum": "8.96",
+          "maximum": "129.95"
+        },
+        {
+          "name": "cost",
+          "kind": "decimal",
+          "non_empty": 40,
+          "distinct": 40,
+          "examples": [
+            "18.28",
+            "12.86",
+            "36.96"
+          ],
+          "minimum": "4.85",
+          "maximum": "55.72"
+        }
+      ],
+      "header_row": 0
+    }
+  ],
+  "findings": [
+    {
+      "code": "duplicate_rows",
+      "severity": "critical",
+      "table": "orders",
+      "column": null,
+      "title": "Rows repeated exactly",
+      "detail": "12 rows are exact copies of another row.",
+      "impact": "Every count and total from this file is overstated until copies are removed.",
+      "examples": [],
+      "affected_rows": 12
+    },
+    {
+      "code": "duplicate_keys",
+      "severity": "critical",
+      "table": "orders",
+      "column": "order_id",
+      "title": "The same ID appears on different rows",
+      "detail": "5 order_id values appear on rows with different contents.",
+      "impact": "These are not simple copies: one of each pair is probably an edit or a mistake, and someone has to decide which row is right.",
+      "examples": [
+        "1023",
+        "1152",
+        "1373",
+        "1439",
+        "1527"
+      ],
+      "affected_rows": 10
+    },
+    {
+      "code": "mixed_currencies",
+      "severity": "critical",
+      "table": "products",
+      "column": "price",
+      "title": "More than one currency in the same column",
+      "detail": "Found EUR, USD.",
+      "impact": "Totals would add different currencies together. Each value needs converting to one currency (with the rate and date used) before any sum.",
+      "examples": [
+        "€8.96",
+        "$34.98"
+      ],
+      "affected_rows": null
+    },
+    {
+      "code": "bad_headers",
+      "severity": "warning",
+      "table": "customers",
+      "column": null,
+      "title": "Blank, padded or repeated column names",
+      "detail": "1 header was renamed so every column has a usable name.",
+      "impact": "Repeated names usually mean two different fields share a label; someone who knows the export should say which is which.",
+      "examples": [
+        "phone_2 (was 'phone')"
+      ],
+      "affected_rows": null
+    },
+    {
+      "code": "near_duplicate_records",
+      "severity": "warning",
+      "table": "customers",
+      "column": "email",
+      "title": "The same email address in different capitalisation",
+      "detail": "1 address appears in different letter case.",
+      "impact": "These are almost certainly the same person counted as separate customers.",
+      "examples": [
+        "EMA.WEBB10@MAIL.COM / ema.webb10@mail.com"
+      ],
+      "affected_rows": 1
+    },
+    {
+      "code": "near_duplicate_records",
+      "severity": "warning",
+      "table": "customers",
+      "column": "name",
+      "title": "Names that look like the same record",
+      "detail": "1 pair of name values is nearly identical.",
+      "impact": "Likely typos or re-entered records; counts of unique customers or clients will be too high until they are merged.",
+      "examples": [
+        "Grace Pine / Grace Pne"
+      ],
+      "affected_rows": 1
+    },
+    {
+      "code": "negative_amounts",
+      "severity": "warning",
+      "table": "orders",
+      "column": "amount",
+      "title": "Negative values where amounts are expected",
+      "detail": "1 value is below zero.",
+      "impact": "Often refunds or corrections. Totals are right only if that is intended; averages and counts of sales are not.",
+      "examples": [
+        "-45"
+      ],
+      "affected_rows": 1
+    },
+    {
+      "code": "numbers_as_text",
+      "severity": "warning",
+      "table": "orders",
+      "column": "amount",
+      "title": "Numbers stored with currency symbols or separators",
+      "detail": "189 values include symbols or thousands separators.",
+      "impact": "Spreadsheets and databases read these as text, so they drop out of sums and averages unless they are cleaned first.",
+      "examples": [
+        "$24.39",
+        "$46.21",
+        "$137.45",
+        "$65.88",
+        "$129.93"
+      ],
+      "affected_rows": 189
+    },
+    {
+      "code": "outliers",
+      "severity": "warning",
+      "table": "orders",
+      "column": "amount",
+      "title": "Unusually large or small values",
+      "detail": "5 values sit far outside the typical range (33.41 to 63.27 for the middle half).",
+      "impact": "Could be real (a big order) or an entry error (an extra zero). Averages will be pulled toward them either way; worth confirming.",
+      "examples": [
+        "25,000",
+        "195.05",
+        "192.20",
+        "172.01",
+        "167.69"
+      ],
+      "affected_rows": 5
+    },
+    {
+      "code": "inconsistent_labels",
+      "severity": "warning",
+      "table": "orders",
+      "column": "country",
+      "title": "The same label is spelled several ways",
+      "detail": "1 label differs only by case or spacing.",
+      "impact": "Breakdowns will split one group into several (e.g. 'US' and 'us ' counted separately).",
+      "examples": [
+        "'US' / 'Us' / 'us '"
+      ],
+      "affected_rows": 320
+    },
+    {
+      "code": "blank_placeholders",
+      "severity": "warning",
+      "table": "orders",
+      "column": "customer_id",
+      "title": "Missing values written as text",
+      "detail": "8 cells hold placeholders instead of being empty.",
+      "impact": "Tools will treat these as real values: counts of distinct values and joins on this column will be wrong until they are blanked.",
+      "examples": [
+        "-",
+        "N/A"
+      ],
+      "affected_rows": 8
+    },
+    {
+      "code": "orphan_keys",
+      "severity": "warning",
+      "table": "orders",
+      "column": "customer_id",
+      "title": "Values with no match in customers",
+      "detail": "6 customer_id values do not exist in customers.customer_id.",
+      "impact": "Rows with these values drop out of any report that joins the two files, usually because the reference list is out of date.",
+      "examples": [
+        "c0900",
+        "c0901",
+        "c0902",
+        "c0903",
+        "c0904"
+      ],
+      "affected_rows": 6
+    },
+    {
+      "code": "future_dates",
+      "severity": "warning",
+      "table": "orders",
+      "column": "order_date",
+      "title": "Dates after the export date",
+      "detail": "2 dates are later than 2024-12-31.",
+      "impact": "Usually typos in the year or scheduled items mixed in with actuals; they land in the wrong period in any time series.",
+      "examples": [
+        "2025-01-15",
+        "2025-02-03"
+      ],
+      "affected_rows": 2
+    },
+    {
+      "code": "mixed_date_formats",
+      "severity": "warning",
+      "table": "orders",
+      "column": "order_date",
+      "title": "Dates are written in more than one format",
+      "detail": "504 like 2024-03-04, 113 like 03/04/2024.",
+      "impact": "Dates like 03/04/2024 are ambiguous (March 4 or April 3), and sorting or monthly totals will be wrong until one format is used.",
+      "examples": [
+        "2024-01-01",
+        "1/2/2024"
+      ],
+      "affected_rows": 113
+    },
+    {
+      "code": "numbers_as_text",
+      "severity": "warning",
+      "table": "products",
+      "column": "price",
+      "title": "Numbers stored with currency symbols or separators",
+      "detail": "40 values include symbols or thousands separators.",
+      "impact": "Spreadsheets and databases read these as text, so they drop out of sums and averages unless they are cleaned first.",
+      "examples": [
+        "$34.98",
+        "$24.68",
+        "$90.21",
+        "$28.54",
+        "$81.32"
+      ],
+      "affected_rows": 40
+    },
+    {
+      "code": "empty_columns",
+      "severity": "info",
+      "table": "customers",
+      "column": null,
+      "title": "Columns with no data",
+      "detail": "1 column is completely empty.",
+      "impact": "Safe to drop, unless the field was expected to be filled.",
+      "examples": [
+        "notes"
+      ],
+      "affected_rows": null
+    },
+    {
+      "code": "title_rows",
+      "severity": "info",
+      "table": "customers",
+      "column": null,
+      "title": "Title rows above the header",
+      "detail": "The header is on row 3; the rows above it were skipped.",
+      "impact": "Fine for this audit, but anything that assumes row 1 is the header will read the title as column names.",
+      "examples": [],
+      "affected_rows": null
+    },
+    {
+      "code": "stray_whitespace",
+      "severity": "info",
+      "table": "orders",
+      "column": "country",
+      "title": "Values with leading or trailing spaces",
+      "detail": "74 values have extra spaces.",
+      "impact": "Invisible, but 'Leeds' and 'Leeds ' will not match in lookups or joins.",
+      "examples": [
+        "'us '"
+      ],
+      "affected_rows": 74
+    }
+  ],
+  "joins": [
+    {
+      "left_table": "orders",
+      "left_column": "customer_id",
+      "right_table": "customers",
+      "right_column": "customer_id",
+      "containment": 0.953,
+      "orphan_values": 6
+    }
+  ],
+  "kpis": [
+    {
+      "name": "Customer base by location and signup month",
+      "tables": [
+        "customers"
+      ],
+      "why": "country gives geography and signup_date gives growth over time."
+    },
+    {
+      "name": "Revenue and orders by month",
+      "tables": [
+        "orders"
+      ],
+      "why": "order_date and amount are enough for monthly revenue and order counts."
+    },
+    {
+      "name": "Average order value and repeat purchase rate",
+      "tables": [
+        "orders"
+      ],
+      "why": "customer_id links orders to buyers, so repeat buying is measurable."
+    },
+    {
+      "name": "Customer cohort retention",
+      "tables": [
+        "orders"
+      ],
+      "why": "First order month per customer_id defines cohorts; later months show who comes back."
+    },
+    {
+      "name": "Price mix and gross margin",
+      "tables": [
+        "products"
+      ],
+      "why": "price per sku with cost gives margin per product."
+    }
+  ]
+}

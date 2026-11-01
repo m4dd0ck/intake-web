@@ -1,0 +1,421 @@
+{
+  "client": "Northline Studio",
+  "as_of": "2024-12-31",
+  "tables": [
+    {
+      "name": "clients",
+      "source": "clients.csv",
+      "rows": 15,
+      "columns": [
+        {
+          "name": "client_id",
+          "kind": "id",
+          "non_empty": 15,
+          "distinct": 15,
+          "examples": [
+            "CL01",
+            "CL02",
+            "CL03"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "client_name",
+          "kind": "category",
+          "non_empty": 15,
+          "distinct": 11,
+          "examples": [
+            "Webb Co",
+            "Stone Labs",
+            "Nakamura Studio"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "city",
+          "kind": "category",
+          "non_empty": 15,
+          "distinct": 3,
+          "examples": [
+            "Leeds",
+            "Bristol",
+            "York"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "since",
+          "kind": "integer",
+          "non_empty": 15,
+          "distinct": 3,
+          "examples": [
+            "2019",
+            "2020",
+            "2021"
+          ],
+          "minimum": "2,019.00",
+          "maximum": "2,021.00"
+        }
+      ],
+      "header_row": 0
+    },
+    {
+      "name": "invoices/2023",
+      "source": "invoices.xlsx",
+      "rows": 40,
+      "columns": [
+        {
+          "name": "invoice_id",
+          "kind": "id",
+          "non_empty": 40,
+          "distinct": 40,
+          "examples": [
+            "INV-2023-001",
+            "INV-2023-002",
+            "INV-2023-003"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "client_id",
+          "kind": "category",
+          "non_empty": 40,
+          "distinct": 14,
+          "examples": [
+            "CL14",
+            "CL06",
+            "CL15"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "issued",
+          "kind": "date",
+          "non_empty": 40,
+          "distinct": 35,
+          "examples": [
+            "2023-03-20",
+            "2023-06-06",
+            "2023-10-14"
+          ],
+          "minimum": "2023-01-28",
+          "maximum": "2023-11-26"
+        },
+        {
+          "name": "amount",
+          "kind": "decimal",
+          "non_empty": 40,
+          "distinct": 40,
+          "examples": [
+            "2638.88",
+            "5203.01",
+            "3858.78"
+          ],
+          "minimum": "857.61",
+          "maximum": "5,825.91"
+        },
+        {
+          "name": "tax",
+          "kind": "percent",
+          "non_empty": 40,
+          "distinct": 1,
+          "examples": [
+            "20%"
+          ],
+          "minimum": "0.20",
+          "maximum": "0.20"
+        },
+        {
+          "name": "paid_on",
+          "kind": "date",
+          "non_empty": 40,
+          "distinct": 36,
+          "examples": [
+            "2023-03-27",
+            "2023-07-18",
+            "2023-12-13"
+          ],
+          "minimum": "2023-03-01",
+          "maximum": "2024-01-20"
+        }
+      ],
+      "header_row": 0
+    },
+    {
+      "name": "invoices/2024",
+      "source": "invoices.xlsx",
+      "rows": 40,
+      "columns": [
+        {
+          "name": "invoice_id",
+          "kind": "id",
+          "non_empty": 40,
+          "distinct": 40,
+          "examples": [
+            "INV-2024-001",
+            "INV-2024-002",
+            "INV-2024-003"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "client_id",
+          "kind": "category",
+          "non_empty": 40,
+          "distinct": 14,
+          "examples": [
+            "CL14",
+            "CL08",
+            "CL02"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "issued",
+          "kind": "integer",
+          "non_empty": 40,
+          "distinct": 37,
+          "examples": [
+            "45394",
+            "45415",
+            "45586"
+          ],
+          "minimum": "45,321.00",
+          "maximum": "45,586.00"
+        },
+        {
+          "name": "amount",
+          "kind": "decimal",
+          "non_empty": 40,
+          "distinct": 40,
+          "examples": [
+            "5214.45",
+            "3847.17",
+            "989.26"
+          ],
+          "minimum": "819.06",
+          "maximum": "5,964.51"
+        },
+        {
+          "name": "tax",
+          "kind": "percent",
+          "non_empty": 40,
+          "distinct": 1,
+          "examples": [
+            "20%"
+          ],
+          "minimum": "0.20",
+          "maximum": "0.20"
+        },
+        {
+          "name": "paid_on",
+          "kind": "date",
+          "non_empty": 40,
+          "distinct": 37,
+          "examples": [
+            "2024-06-01",
+            "2024-05-22",
+            "2024-11-15"
+          ],
+          "minimum": "2024-02-05",
+          "maximum": "2024-12-03"
+        }
+      ],
+      "header_row": 0
+    },
+    {
+      "name": "timesheets",
+      "source": "timesheets.csv",
+      "rows": 432,
+      "columns": [
+        {
+          "name": "date",
+          "kind": "date",
+          "non_empty": 432,
+          "distinct": 144,
+          "examples": [
+            "2024-01-01",
+            "2024-01-02",
+            "2024-01-03"
+          ],
+          "minimum": "2024-01-01",
+          "maximum": "2024-07-18"
+        },
+        {
+          "name": "client_id",
+          "kind": "category",
+          "non_empty": 432,
+          "distinct": 16,
+          "examples": [
+            "CL09",
+            "CL12",
+            "CL03"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "person",
+          "kind": "category",
+          "non_empty": 432,
+          "distinct": 3,
+          "examples": [
+            "Rosa",
+            "Theo",
+            "Mina"
+          ],
+          "minimum": null,
+          "maximum": null
+        },
+        {
+          "name": "hours",
+          "kind": "decimal",
+          "non_empty": 432,
+          "distinct": 5,
+          "examples": [
+            "6",
+            "8",
+            "4"
+          ],
+          "minimum": "4.00",
+          "maximum": "60.00"
+        }
+      ],
+      "header_row": 0
+    }
+  ],
+  "findings": [
+    {
+      "code": "inconsistent_labels",
+      "severity": "warning",
+      "table": "clients",
+      "column": "city",
+      "title": "The same label is spelled several ways",
+      "detail": "1 label differs only by case or spacing.",
+      "impact": "Breakdowns will split one group into several (e.g. 'US' and 'us ' counted separately).",
+      "examples": [
+        "'Leeds ' / 'Leeds'"
+      ],
+      "affected_rows": 7
+    },
+    {
+      "code": "excel_serial_dates",
+      "severity": "warning",
+      "table": "invoices/2024",
+      "column": "issued",
+      "title": "Dates saved as Excel serial numbers",
+      "detail": "40 values look like Excel day counts (e.g. 45412 = 2024-04-30).",
+      "impact": "They sort correctly but read as numbers; they need converting before any date grouping or display.",
+      "examples": [
+        "45394",
+        "45415",
+        "45586",
+        "45458",
+        "45338"
+      ],
+      "affected_rows": 40
+    },
+    {
+      "code": "orphan_keys",
+      "severity": "warning",
+      "table": "timesheets",
+      "column": "client_id",
+      "title": "Values with no match in clients",
+      "detail": "1 client_id value does not exist in clients.client_id.",
+      "impact": "Rows with these values drop out of any report that joins the two files, usually because the reference list is out of date.",
+      "examples": [
+        "cl99"
+      ],
+      "affected_rows": 1
+    },
+    {
+      "code": "outliers",
+      "severity": "warning",
+      "table": "timesheets",
+      "column": "hours",
+      "title": "Unusually large or small values",
+      "detail": "1 value sits far outside the typical range (4 to 8 for the middle half).",
+      "impact": "Could be real (a big order) or an entry error (an extra zero). Averages will be pulled toward them either way; worth confirming.",
+      "examples": [
+        "60"
+      ],
+      "affected_rows": 1
+    },
+    {
+      "code": "stray_whitespace",
+      "severity": "info",
+      "table": "clients",
+      "column": "city",
+      "title": "Values with leading or trailing spaces",
+      "detail": "4 values have extra spaces.",
+      "impact": "Invisible, but 'Leeds' and 'Leeds ' will not match in lookups or joins.",
+      "examples": [
+        "'Leeds '"
+      ],
+      "affected_rows": 4
+    }
+  ],
+  "joins": [
+    {
+      "left_table": "invoices/2023",
+      "left_column": "client_id",
+      "right_table": "clients",
+      "right_column": "client_id",
+      "containment": 1.0,
+      "orphan_values": 0
+    },
+    {
+      "left_table": "invoices/2024",
+      "left_column": "client_id",
+      "right_table": "clients",
+      "right_column": "client_id",
+      "containment": 1.0,
+      "orphan_values": 0
+    },
+    {
+      "left_table": "timesheets",
+      "left_column": "client_id",
+      "right_table": "clients",
+      "right_column": "client_id",
+      "containment": 0.938,
+      "orphan_values": 1
+    }
+  ],
+  "kpis": [
+    {
+      "name": "Customer base by location",
+      "tables": [
+        "clients"
+      ],
+      "why": "city gives geography."
+    },
+    {
+      "name": "Billed vs collected, and days to pay",
+      "tables": [
+        "invoices/2023"
+      ],
+      "why": "issued and amount give billing by month; paid_on shows what was collected."
+    },
+    {
+      "name": "Billed vs collected, and days to pay",
+      "tables": [
+        "invoices/2024"
+      ],
+      "why": "paid_on and amount give billing by month; paid_on shows what was collected."
+    },
+    {
+      "name": "Billable hours and utilisation",
+      "tables": [
+        "timesheets"
+      ],
+      "why": "hours per date per client_id gives hours by week and client; with invoices, an effective hourly rate."
+    }
+  ]
+}
