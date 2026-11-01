@@ -9,3 +9,4 @@ tests/fixtures/
 package-lock.json
 PRPs/
 INITIAL.md
+*.md
