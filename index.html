@@ -57,21 +57,20 @@
         </form>
         <p class="hint">Dates later than the export date are flagged as future dates.</p>
 
-        <button id="drop-zone" class="drop-zone" type="button" aria-describedby="drop-help">
+        <label id="drop-zone" class="drop-zone" for="file-input">
           <span class="drop-title">Drop CSV or Excel files here</span>
           <span id="drop-help" class="drop-help"
             >or click to choose files (.csv, .txt, .xlsx, .xlsm; several at once is fine)</span
           >
-        </button>
-        <input
-          id="file-input"
-          class="visually-hidden"
-          type="file"
-          multiple
-          accept=".csv,.txt,.xlsx,.xlsm"
-          tabindex="-1"
-          aria-hidden="true"
-        />
+          <input
+            id="file-input"
+            class="visually-hidden"
+            type="file"
+            multiple
+            accept=".csv,.txt,.xlsx,.xlsm"
+            aria-describedby="drop-help"
+          />
+        </label>
 
         <div class="samples">
           <p>No files to hand? Try DataIntake's synthetic demo exports:</p>

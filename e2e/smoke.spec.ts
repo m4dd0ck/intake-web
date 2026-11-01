@@ -71,12 +71,14 @@ test("a visitor's own files are audited and unsupported ones listed", async ({ p
   await expect(page.locator("#notice")).toContainText("notes.pdf");
 });
 
-test("the drop zone opens the file picker from the keyboard", async ({ page }) => {
+test("the drop zone is reached and opened from the keyboard", async ({ page }) => {
   await page.goto("/");
   await engineReady(page);
-  await page.locator("#drop-zone").focus();
+  await page.getByLabel("Leave out example values").focus();
+  await page.keyboard.press("Tab");
+  await expect(page.locator("#file-input")).toBeFocused();
   const chooser = page.waitForEvent("filechooser");
-  await page.keyboard.press("Enter");
+  await page.keyboard.press("Space");
   expect((await chooser).isMultiple()).toBe(true);
 });
 

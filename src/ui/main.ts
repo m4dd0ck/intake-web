@@ -21,7 +21,7 @@ const ui = {
   client: element("client", HTMLInputElement),
   asOf: element("as-of", HTMLInputElement),
   hideExamples: element("hide-examples", HTMLInputElement),
-  dropZone: element("drop-zone", HTMLButtonElement),
+  dropZone: element("drop-zone", HTMLLabelElement),
   fileInput: element("file-input", HTMLInputElement),
   sampleFiles: element("sample-files", HTMLParagraphElement),
   progressPanel: element("progress-panel", HTMLElement),
@@ -144,9 +144,6 @@ function auditChosenFiles(files: FileList | null): void {
 
 ui.asOf.value = today();
 
-ui.dropZone.addEventListener("click", () => {
-  ui.fileInput.click();
-});
 ui.fileInput.addEventListener("change", () => {
   auditChosenFiles(ui.fileInput.files);
   ui.fileInput.value = "";
@@ -224,5 +221,5 @@ element("start-over", HTMLButtonElement).addEventListener("click", () => {
   ui.result.hidden = true;
   ui.notice.hidden = true;
   current = null;
-  ui.dropZone.focus();
+  ui.fileInput.focus();
 });
