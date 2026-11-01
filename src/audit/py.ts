@@ -8,13 +8,33 @@
 // Reason: the characters Python's str.isspace() accepts; JS \s misses \x1c-\x1f and \x85.
 export const PY_SPACE =
   "\\t\\n\\v\\f\\r\\x1c-\\x1f \\x85\\xa0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000";
-const LEADING = new RegExp(`^[${PY_SPACE}]+`, "u");
-const TRAILING = new RegExp(`[${PY_SPACE}]+$`, "u");
 const RUNS = new RegExp(`[${PY_SPACE}]+`, "u");
+
+function isSpaceCode(code: number): boolean {
+  return (
+    code === 32 ||
+    (code >= 9 && code <= 13) ||
+    (code >= 0x1c && code <= 0x1f) ||
+    code === 0x85 ||
+    code === 0xa0 ||
+    code === 0x1680 ||
+    (code >= 0x2000 && code <= 0x200a) ||
+    code === 0x2028 ||
+    code === 0x2029 ||
+    code === 0x202f ||
+    code === 0x205f ||
+    code === 0x3000
+  );
+}
 
 /** Python `str.strip()`. */
 export function strip(value: string): string {
-  return value.replace(LEADING, "").replace(TRAILING, "");
+  // Reason: index scanning instead of regex; this runs on every cell, several times.
+  let start = 0;
+  let end = value.length;
+  while (start < end && isSpaceCode(value.charCodeAt(start))) start += 1;
+  while (end > start && isSpaceCode(value.charCodeAt(end - 1))) end -= 1;
+  return start === 0 && end === value.length ? value : value.slice(start, end);
 }
 
 /** Python `str.split()` with no argument: split on whitespace runs, drop empty parts. */

@@ -12,6 +12,8 @@ export interface TableContext {
   columns: Map<string, ColumnAnalysis>;
   /** Export date, YYYY-MM-DD. */
   asOf: string;
+  /** Column values by position, filled on first use; every check reads the same arrays. */
+  cache: Map<number, (string | null)[]>;
 }
 
 export function buildContext(table: RawTable, asOf: string): TableContext {
@@ -19,7 +21,7 @@ export function buildContext(table: RawTable, asOf: string): TableContext {
   table.columns.forEach((name, index) => {
     columns.set(name, analyseColumn(name, columnValues(table, index)));
   });
-  return { table, columns, asOf };
+  return { table, columns, asOf, cache: new Map() };
 }
 
 function columnValues(table: RawTable, index: number): (string | null)[] {
@@ -28,7 +30,13 @@ function columnValues(table: RawTable, index: number): (string | null)[] {
 
 /** Values of a column by name (the first column with that name, as in DataIntake). */
 export function values(ctx: TableContext, column: string): (string | null)[] {
-  return columnValues(ctx.table, ctx.table.columns.indexOf(column));
+  const index = ctx.table.columns.indexOf(column);
+  let cached = ctx.cache.get(index);
+  if (!cached) {
+    cached = columnValues(ctx.table, index);
+    ctx.cache.set(index, cached);
+  }
+  return cached;
 }
 
 /** First few distinct values as display strings, each cut to 40 characters. */

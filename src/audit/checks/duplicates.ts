@@ -13,7 +13,14 @@ export const MAX_FUZZY_VALUES = 3000;
 const MAX_NAME_LENGTH = 200;
 
 export function check(ctx: TableContext): Finding[] {
-  return [...duplicateRows(ctx), ...duplicateKeys(ctx), ...nearDuplicates(ctx)];
+  // Reason: one pass builds both views of the rows; this check is the slowest on big files.
+  const unique = new Map<string, NormalisedRow>();
+  for (const row of normalisedRows(ctx)) unique.set(rowKey(row), row);
+  return [
+    ...duplicateRows(ctx, unique.size),
+    ...duplicateKeys(ctx, unique),
+    ...nearDuplicates(ctx),
+  ];
 }
 
 type NormalisedRow = string[];
@@ -26,9 +33,8 @@ function rowKey(row: NormalisedRow): string {
   return JSON.stringify(row);
 }
 
-function duplicateRows(ctx: TableContext): Finding[] {
-  const rows = normalisedRows(ctx);
-  const extra = rows.length - new Set(rows.map(rowKey)).size;
+function duplicateRows(ctx: TableContext, uniqueCount: number): Finding[] {
+  const extra = ctx.table.rows.length - uniqueCount;
   if (!extra) return [];
   return [
     finding({
@@ -44,10 +50,8 @@ function duplicateRows(ctx: TableContext): Finding[] {
 }
 
 /** Key-like columns that are nearly unique but repeat on rows that disagree. */
-function duplicateKeys(ctx: TableContext): Finding[] {
+function duplicateKeys(ctx: TableContext, uniqueRows: Map<string, NormalisedRow>): Finding[] {
   const findings: Finding[] = [];
-  const uniqueRows = new Map<string, NormalisedRow>();
-  for (const row of normalisedRows(ctx)) uniqueRows.set(rowKey(row), row);
   [...ctx.columns].forEach(([name, column], position) => {
     const looksLikeKey = column.kind === "id" || (position === 0 && ID_NAME.test(name));
     if (!looksLikeKey || column.nonBlank === 0) return;
