@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Data audit in your browser</title>
+    <meta
+      name="description"
+      content="Drop CSV and Excel exports and get a first-day data audit. Runs entirely in your browser; files are never uploaded."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232e5e4e'/%3E%3Cpath d='M4 5h8M4 8h8M4 11h5' stroke='white' stroke-width='1.6'/%3E%3C/svg%3E"
+    />
+    <script type="module" src="/src/ui/main.ts"></script>
+  </head>
+  <body>
+    <main>
+      <header class="intro">
+        <h1>Data audit in your browser</h1>
+        <p class="lead">
+          Drop the CSV and Excel files a client sent and get a first-day audit: what each file
+          holds, what is wrong with it in plain language, how the files connect, and which metrics
+          the data can support. It is the browser version of
+          <a href="https://github.com/m4dd0ck/data-intake">DataIntake</a>, with the same checks and
+          the same wording.
+        </p>
+      </header>
+
+      <section class="privacy" aria-labelledby="privacy-title">
+        <h2 id="privacy-title">Your files stay on this computer</h2>
+        <p>
+          The audit runs inside this page. Once the page has loaded it makes no network requests:
+          nothing is uploaded, there are no analytics and no tracking. The page's Content Security
+          Policy stops it from connecting to any other site, and your browser's network tab will
+          show nothing being sent.
+        </p>
+        <p class="engine" id="engine-status" role="status">Loading the audit engine…</p>
+      </section>
+
+      <section class="start" aria-labelledby="start-title">
+        <h2 id="start-title">Audit your files</h2>
+        <form id="audit-form" class="options">
+          <label
+            >Client name
+            <input id="client" name="client" type="text" value="Client" autocomplete="off" />
+          </label>
+          <label
+            >Export date
+            <input id="as-of" name="as-of" type="date" required />
+          </label>
+          <label class="check">
+            <input id="hide-examples" name="hide-examples" type="checkbox" />
+            Leave out example values (for a report that will be shared beyond the client)
+          </label>
+        </form>
+        <p class="hint">Dates later than the export date are flagged as future dates.</p>
+
+        <button id="drop-zone" class="drop-zone" type="button" aria-describedby="drop-help">
+          <span class="drop-title">Drop CSV or Excel files here</span>
+          <span id="drop-help" class="drop-help"
+            >or click to choose files (.csv, .txt, .xlsx, .xlsm; several at once is fine)</span
+          >
+        </button>
+        <input
+          id="file-input"
+          class="visually-hidden"
+          type="file"
+          multiple
+          accept=".csv,.txt,.xlsx,.xlsm"
+          tabindex="-1"
+          aria-hidden="true"
+        />
+
+        <div class="samples">
+          <p>No files to hand? Try DataIntake's synthetic demo exports:</p>
+          <div class="sample-buttons">
+            <button type="button" class="secondary" data-sample="shop">Try the sample store</button>
+            <button type="button" class="secondary" data-sample="studio">
+              Try the sample studio
+            </button>
+          </div>
+          <p class="sample-files" id="sample-files"></p>
+        </div>
+      </section>
+
+      <section class="progress-panel" id="progress-panel" hidden aria-live="polite">
+        <p id="progress-label">Working…</p>
+        <progress id="progress" max="1" value="0"></progress>
+      </section>
+
+      <div id="notice" class="notice" role="alert" hidden></div>
+
+      <section id="result" hidden aria-label="Audit report">
+        <div class="toolbar">
+          <button type="button" id="download-html">Download report (.html)</button>
+          <button type="button" id="download-json" class="secondary">
+            Download findings (.json)
+          </button>
+          <button type="button" id="start-over" class="secondary">Audit other files</button>
+        </div>
+        <div id="report" class="report" tabindex="-1"></div>
+      </section>
+
+      <footer class="page-footer">
+        Source and method:
+        <a href="https://github.com/m4dd0ck/intake-web">intake-web on GitHub</a>. The Python
+        command-line version is <a href="https://github.com/m4dd0ck/data-intake">DataIntake</a>.
+        Findings describe the files as received; nothing is changed.
+      </footer>
+    </main>
+  </body>
+</html>

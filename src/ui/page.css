@@ -1,0 +1,192 @@
+/* Page chrome around the report; colours come from report.css. */
+a {
+  color: var(--accent);
+}
+.lead {
+  font-size: 16px;
+  max-width: 68ch;
+}
+section {
+  margin-top: 28px;
+}
+.privacy,
+.start,
+.progress-panel,
+.notice {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+.privacy {
+  border-left: 4px solid var(--accent);
+}
+.privacy h2,
+.start h2 {
+  margin: 0 0 8px;
+}
+.privacy p {
+  margin: 0 0 8px;
+}
+.engine {
+  color: var(--muted);
+  font-size: 14px;
+}
+.engine.ready {
+  color: var(--accent);
+  font-weight: 600;
+}
+.engine.failed {
+  color: var(--critical);
+  font-weight: 600;
+}
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: end;
+}
+.options label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.options label.check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  flex-basis: 100%;
+}
+input[type="text"],
+input[type="date"] {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 10px;
+  min-width: 12rem;
+}
+.hint {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 8px 0 16px;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  padding: 8px 14px;
+}
+button.secondary {
+  background: transparent;
+  color: var(--accent);
+}
+button.link {
+  border: 0;
+  background: none;
+  color: var(--accent);
+  padding: 0;
+  text-decoration: underline;
+  font-size: 13px;
+}
+button:focus-visible,
+input:focus-visible,
+a:focus-visible,
+.report:focus-visible {
+  outline: 3px solid var(--info);
+  outline-offset: 2px;
+}
+.drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 36px 16px;
+  border: 2px dashed var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+}
+.drop-zone:hover,
+.drop-zone.over {
+  border-color: var(--accent);
+}
+.drop-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.drop-help {
+  color: var(--muted);
+  font-size: 14px;
+}
+.samples {
+  margin-top: 16px;
+}
+.samples p {
+  margin: 0 0 8px;
+}
+.sample-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.sample-files {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 10px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+progress {
+  width: 100%;
+}
+.notice {
+  margin-top: 20px;
+  border-left: 4px solid var(--warning);
+}
+.notice p {
+  margin: 0;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 8px 0 24px;
+}
+.report:focus {
+  outline: none;
+}
+.report .report-title {
+  font-size: 26px;
+  margin: 0 0 4px;
+}
+.report h3 {
+  font-size: 19px;
+  margin: 40px 0 12px;
+}
+.report .finding h4 {
+  font-size: 15px;
+  margin: 0 0 4px;
+}
+.page-footer {
+  margin-top: 56px;
+  color: var(--muted);
+  font-size: 13px;
+}
+[hidden] {
+  display: none !important;
+}
